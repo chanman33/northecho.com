@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-canvas text-ink;
+  }
+  ::selection {
+    @apply bg-accent/30 text-ink;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-eyebrow font-semibold uppercase tracking-widest2 text-accent-bright;
+  }
+  .dot-grid-bg {
+    @apply bg-dot-grid bg-dot-lg;
+  }
+}
