@@ -122,7 +122,7 @@ export default function HomePage() {
           </div>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-muted">
           North Echo is an asset manager for AI compute infrastructure. 
-          Our partners directly own GPU fleets through dedicated vehicles. 
+          Our investors and limitedpartners directly own GPU fleets through dedicated vehicles. 
           We source, underwrite, acquire, and operate the hardware where the AI economy consumes it.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
