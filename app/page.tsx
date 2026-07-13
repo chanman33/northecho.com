@@ -304,7 +304,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold tracking-tight text-ink">
             We operate across the full stack:{" "}
             <span className="font-serif italic text-accent-bright">
-              co-investor, operator, and tenant.
+              co-investor and tenant.
             </span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-muted">
@@ -315,7 +315,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
           <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
             <span className="eyebrow">Role 01</span>
             <h3 className="mt-2 text-xl font-bold text-ink">Co-investor</h3>
@@ -327,15 +327,6 @@ export default function HomePage() {
           </div>
           <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
             <span className="eyebrow">Role 02</span>
-            <h3 className="mt-2 text-xl font-bold text-ink">Operator</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-              Professional operations as a service. Procurement, deployment,
-              scheduling, and telemetry across the fleet, run to institutional
-              standard.
-            </p>
-          </div>
-          <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
-            <span className="eyebrow">Role 03</span>
             <h3 className="mt-2 text-xl font-bold text-ink">Tenant</h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-muted">
               We are our own anchor tenant. Partner-owned GPU fleets occupy the
@@ -357,9 +348,7 @@ export default function HomePage() {
             Build the infrastructure. Own what every AI company will need.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-muted">
-            Partner with North Echo to own the compute the AI economy runs on,
-            or meet the team building it.
-          </p>
+            Partner with North Echo to own the compute the AI economy runs on.          </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
               Partner with us
