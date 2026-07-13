@@ -69,7 +69,6 @@ const INVEST_MAILTO = "mailto:invest@northecho.com";
 // Customer-facing product site and inboxes.
 const CLOUD_SITE = "https://northecho.ai";
 const COLOCATION_MAILTO = "mailto:colocation@northecho.com";
-const CLOUD_MAILTO = "mailto:cloud@northecho.com";
 
 export default function HomePage() {
   return (
@@ -97,8 +96,7 @@ export default function HomePage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-     
-            Rent Compute
+            Access the fleet
           </Button>
         </div>
       </header>
@@ -183,14 +181,14 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-ink">
-              Two ways to buy the same fleet:{" "}
+              Two channels for the same owned fleet:{" "}
               <span className="font-serif italic text-accent-bright">
-                wholesale and direct.
+                capacity and direct.
               </span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-muted">
-              We lease owned GPU capacity wholesale to the leading inference
-              platforms already serving production demand, and we rent compute
+              We lease owned GPU capacity to the leading inference platforms
+              already serving production demand, and we provision compute
               directly to scaled AI companies through our own GPU cloud. Both
               channels put revenue against the same owned hardware, so
               utilization does not depend on any single buyer.
@@ -207,20 +205,17 @@ export default function HomePage() {
               >
                 Learn more
               </Button>
-              <Button variant="secondary" href={CLOUD_MAILTO}>
-                Rent compute
-              </Button>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
               <div className="mb-3 flex items-center justify-between">
-                <span className="eyebrow">Channel 01 · Wholesale</span>
+                <span className="eyebrow">Channel 01 · Capacity</span>
                 <Badge tone="confirmed">Active</Badge>
               </div>
               <h3 className="mb-2 text-lg font-semibold text-ink">
-                Wholesale compute
+                Capacity compute
               </h3>
               <p className="text-sm leading-relaxed text-ink-muted">
                 Lease partner-owned fleets to established inference platforms.
@@ -235,13 +230,13 @@ export default function HomePage() {
                 <Badge tone="confirmed">Active</Badge>
               </div>
               <h3 className="mb-2 text-lg font-semibold text-ink">
-                Direct: open core bare-metal GPU cloud
+                Direct: dedicated production GPU cloud
               </h3>
               <p className="text-sm leading-relaxed text-ink-muted">
-                Sell compute directly to scaled AI companies that rent blocks
-                of GPU capacity through our cloud service. An open core bare-metal GPU
-                cloud model that monetizes the fleet with no
-                hyperscaler in the middle.
+                Serve compute directly to scaled AI companies that contract
+                dedicated capacity through our cloud service. An owned,
+                bare-metal GPU cloud that monetizes the fleet with no
+                hyperscaler dependency.
               </p>
             </div>
           </div>
