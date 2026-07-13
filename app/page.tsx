@@ -114,7 +114,6 @@ export default function HomePage() {
             <Headline
               pre="Own the compute"
               emphasis="the AI economy runs on."
-              post="We execute the strategy."
             />
           </div>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-muted">
