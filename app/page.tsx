@@ -112,9 +112,15 @@ export default function HomePage() {
           <Eyebrow>Private Asset Manager · AI Compute Infrastructure</Eyebrow>
           <div className="mt-6 max-w-3xl">
             <Headline
-              pre="Own the compute"
+              pre={
+                <>
+                  Own the compute
+                  <br />
+                </>
+              }
               emphasis="the AI economy runs on."
             />
+
           </div>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-muted">
           North Echo is an asset manager for AI compute infrastructure. 
