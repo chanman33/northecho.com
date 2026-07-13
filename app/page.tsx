@@ -45,7 +45,7 @@ function AudienceCard({
 }) {
   return (
     <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
-      <div className="eyebrow mb-3">{eyebrow}</div>
+      {/* <div className="eyebrow mb-3">{eyebrow}</div> */}
       <h3 className="mb-2 text-lg font-semibold text-ink">{title}</h3>
       <p className="text-sm leading-relaxed text-ink-muted">{copy}</p>
     </div>
@@ -189,10 +189,12 @@ export default function HomePage() {
               already serving production demand, and we provision compute
               directly to scaled AI companies through our own GPU cloud. Both
               channels put revenue against the same owned hardware, so
-              utilization does not depend on any single buyer.
+              utilization does not depend on any single buyer or operator.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               <RoleTag label="Leading inference platforms" />
+              <RoleTag label="Next-gen AI labs" />
+              <RoleTag label="High-growth, VC-backed startups" />
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
@@ -225,7 +227,7 @@ export default function HomePage() {
             <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
               <div className="mb-3 flex items-center justify-between">
                 <span className="eyebrow">Channel 02 · Direct</span>
-                <Badge tone="confirmed">Active</Badge>
+                <Badge tone="warn">Coming Soon</Badge>
               </div>
               <h3 className="mb-2 text-lg font-semibold text-ink">
                 Direct: dedicated production GPU cloud
