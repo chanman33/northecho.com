@@ -92,10 +92,13 @@ export default function HomePage() {
           </nav>
           <Button
             variant="secondary"
-            href={INVEST_MAILTO}
+            href={CLOUD_SITE}
             className="hidden md:inline-flex"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Partner with us
+     
+            Rent Compute
           </Button>
         </div>
       </header>
@@ -109,24 +112,23 @@ export default function HomePage() {
           <Eyebrow>Private Asset Manager · AI Compute Infrastructure</Eyebrow>
           <div className="mt-6 max-w-3xl">
             <Headline
-              pre="We own and operate the compute"
-              emphasis="autonomous systems will run on."
+              pre="Own the compute"
+              emphasis="the AI economy runs on."
+              post="We execute the strategy."
             />
           </div>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-muted">
-            North Echo is an asset manager that acquires GPU infrastructure and
-            operates it on behalf of long-term capital. We raise from investors
-            who want direct, tax-advantaged ownership of a real asset with
-            structural demand behind it, and we place that hardware where the
-            AI economy actually consumes it.
+          North Echo is an asset manager for AI compute infrastructure. 
+          Our partners directly own GPU fleets through dedicated vehicles. 
+          We source, underwrite, acquire, and operate the hardware where the AI economy consumes it.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button variant="primary" href={INVEST_MAILTO}>
               Partner with us
             </Button>
-            <Button variant="ghost" href={INVEST_MAILTO}>
+            {/* <Button variant="ghost" href={INVEST_MAILTO}>
               Meet the team
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>
@@ -134,35 +136,37 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Who we raise from                                                */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="investors" eyebrow="Who We Raise From">
+      <Section id="investors" eyebrow="Partnership Structure">
         <div className="max-w-3xl">
           <h2 className="text-3xl font-bold tracking-tight text-ink">
             Long-term private capital, not the public markets.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-muted">
-            We raise from investors seeking direct fractional ownership of
-            physical compute. No cloud equity, no synthetic exposure. Vehicles
-            are structured for accredited and qualified participants under Reg D,
-            with a real-asset distribution profile and pass-through depreciation
-            benefits.
+            North Echo serves as general partner and manager. Investors
+            participate as limited partners with direct fractional ownership of
+            physical compute — no cloud equity, no synthetic exposure. Vehicles
+            are structured under Reg D for accredited and qualified
+            participants, with defined hold periods, quarterly distributions
+            from contracted revenue, and pass-through depreciation where
+            applicable.
           </p>
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           <AudienceCard
             eyebrow="LP Profile 01"
-            title="High-income individuals"
-            copy="Accredited professionals seeking a tax-advantaged real asset. Bonus depreciation passes through to the investor, not the operating company."
+            title="Institutional investors"
+            copy="Allocators seeking direct real-asset exposure to AI infrastructure: contracted revenue, hard-asset backing, and governance, reporting, and administration built to institutional standard."
           />
           <AudienceCard
             eyebrow="LP Profile 02"
-            title="Wealth advisers & RIAs"
-            copy="Advisers allocating client capital into an alternative with hard-asset backing, quarterly distributions, and a defined hold period."
+            title="Family offices"
+            copy="Direct co-ownership of revenue-generating hardware, structured for principals who evaluate sponsors the way they evaluate real estate GPs: alignment, underwriting discipline, and a defined path to exit."
           />
           <AudienceCard
             eyebrow="LP Profile 03"
-            title="Family offices"
-            copy="Direct co-ownership of revenue-generating hardware, structured for principals who understand depreciation-driven real-asset returns."
+            title="Wealth advisers & RIAs"
+            copy="Advisers allocating client capital into an alternative with hard-asset backing, quarterly distributions, a defined hold period, and pass-through depreciation for taxable investors."
           />
         </div>
       </Section>
@@ -214,9 +218,9 @@ export default function HomePage() {
                 Wholesale compute
               </h3>
               <p className="text-sm leading-relaxed text-ink-muted">
-                Lease owned fleets to established inference platforms. Capital
-                flows into revenue hardware, not platform R&D. Utilization from
-                day one.
+                Lease partner-owned fleets to established inference platforms.
+                Capital flows into revenue hardware, not platform R&D.
+                Utilization from day one.
               </p>
             </div>
 
@@ -226,13 +230,13 @@ export default function HomePage() {
                 <Badge tone="confirmed">Active</Badge>
               </div>
               <h3 className="mb-2 text-lg font-semibold text-ink">
-                Direct: open core GPU cloud
+                Direct: open core bare-metal GPU cloud
               </h3>
               <p className="text-sm leading-relaxed text-ink-muted">
                 Sell compute directly to scaled AI companies that rent blocks
-                of GPU capacity through our cloud service. An open core GPU
-                cloud model that monetizes the owned fleet with no hyperscaler
-                in the middle.
+                of GPU capacity through our cloud service. An open core bare-metal GPU
+                cloud model that monetizes the fleet with no
+                hyperscaler in the middle.
               </p>
             </div>
           </div>
@@ -280,8 +284,9 @@ export default function HomePage() {
               cost, predictable performance.
             </Card>
             <Card eyebrow="Value 03" title="No capex burden">
-              The enterprise consumes capacity. North Echo and its investors own
-              and depreciate the hardware.
+              The enterprise consumes capacity. North Echo&apos;s limited
+              partners own and depreciate the hardware; North Echo manages the
+              deployment end to end.
             </Card>
             <Card eyebrow="Value 04" title="Sovereign control">
               Every layer owned or contracted by the vehicle. No hyperscaler
@@ -315,8 +320,9 @@ export default function HomePage() {
             <span className="eyebrow">Role 01</span>
             <h3 className="mt-2 text-xl font-bold text-ink">Co-investor</h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-              We put capital alongside development partners on power, shell, and
-              buildout, sharing in the economics of the facility itself.
+              Where the mandate allows, partner capital participates alongside
+              development partners in power, shell, and buildout — extending LP
+              ownership from the fleet to the facility economics themselves.
             </p>
           </div>
           <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
@@ -332,8 +338,9 @@ export default function HomePage() {
             <span className="eyebrow">Role 03</span>
             <h3 className="mt-2 text-xl font-bold text-ink">Tenant</h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-              We are our own anchor tenant. Owned GPU fleets occupy the space,
-              guaranteeing a utilization floor and de-risking the development.
+              We are our own anchor tenant. Partner-owned GPU fleets occupy the
+              space, guaranteeing a utilization floor and de-risking the
+              development.
             </p>
           </div>
         </div>
