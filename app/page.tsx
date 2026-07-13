@@ -2,6 +2,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Headline } from "@/components/ui/Headline";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 import { Badge } from "@/components/ui/Badge";
 
 // -------------------------------------------------------------------------
@@ -65,10 +66,10 @@ function RoleTag({ label }: { label: string }) {
 // -------------------------------------------------------------------------
 
 // Investor contact routes to a single inbox for now.
-const INVEST_MAILTO = "mailto:invest@northecho.com";
+const INVEST_EMAIL = "invest@northecho.com";
 // Customer-facing product site and inboxes.
 const CLOUD_SITE = "https://northecho.ai";
-const COLOCATION_MAILTO = "mailto:colocation@northecho.com";
+const COLOCATION_EMAIL = "colocation@northecho.com";
 
 export default function HomePage() {
   return (
@@ -126,12 +127,9 @@ export default function HomePage() {
           We source, underwrite, acquire, and operate the hardware where the AI economy consumes it.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Button variant="primary" href={INVEST_MAILTO}>
+            <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
               Partner with us
-            </Button>
-            {/* <Button variant="ghost" href={INVEST_MAILTO}>
-              Meet the team
-            </Button> */}
+            </CopyEmailButton>
           </div>
         </div>
       </section>
@@ -149,7 +147,7 @@ export default function HomePage() {
             participate as limited partners with direct fractional ownership of
             physical compute — no cloud equity, no synthetic exposure. Vehicles
             are structured under Reg D for accredited and qualified
-            participants, with defined hold periods, quarterly distributions
+            participants, with quarterly distributions
             from contracted revenue, and pass-through depreciation where
             applicable.
           </p>
@@ -268,9 +266,9 @@ export default function HomePage() {
               >
                 Learn more
               </Button>
-              <Button variant="secondary" href={COLOCATION_MAILTO}>
+              <CopyEmailButton variant="secondary" email={COLOCATION_EMAIL}>
                 Talk to us about co-location
-              </Button>
+              </CopyEmailButton>
             </div>
           </div>
 
@@ -361,12 +359,12 @@ export default function HomePage() {
             or meet the team building it.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button variant="primary" href={INVEST_MAILTO}>
+            <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
               Partner with us
-            </Button>
-            <Button variant="secondary" href={INVEST_MAILTO}>
+            </CopyEmailButton>
+            <CopyEmailButton variant="secondary" email={INVEST_EMAIL}>
               Meet the team
-            </Button>
+            </CopyEmailButton>
           </div>
         </div>
       </section>
