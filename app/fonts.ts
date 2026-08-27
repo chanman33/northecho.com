@@ -1,21 +1,13 @@
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Source_Sans_3 } from "next/font/google";
 
-export const inter = Inter({
+// Source Sans 3 is the closest open analog to Calibri, the face used across
+// the investor one-pager and the rest of the brand materials: humanist
+// proportions, open apertures, and a warmth that Inter's geometric neutrality
+// doesn't have. Weights match the three registers the print work uses —
+// regular body, semibold micro-labels, bold headlines and values.
+export const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-// Place Gelasio .woff2 files at /public/fonts/ if not using Google Fonts CDN.
-// If these files don't exist yet, comment this block out and fall back to
-// fontFamily: serif: ["Georgia", "serif"] in tailwind.config.ts.
-export const gelasio = localFont({
-  src: [
-    { path: "../public/fonts/Gelasio-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../public/fonts/Gelasio-Italic.woff2", weight: "400", style: "italic" },
-    { path: "../public/fonts/Gelasio-Bold.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-gelasio",
+  weight: ["400", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });

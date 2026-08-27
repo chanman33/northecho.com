@@ -1,9 +1,11 @@
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Headline } from "@/components/ui/Headline";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 import { Badge } from "@/components/ui/Badge";
+import { Wordmark } from "@/components/ui/Wordmark";
 
 // -------------------------------------------------------------------------
 // Small local section primitives (kept in-file so this page drops in clean)
@@ -11,11 +13,13 @@ import { Badge } from "@/components/ui/Badge";
 
 function Section({
   id,
+  index,
   eyebrow,
   children,
   className = "",
 }: {
   id?: string;
+  index?: string;
   eyebrow?: string;
   children: React.ReactNode;
   className?: string;
@@ -24,8 +28,8 @@ function Section({
     <section id={id} className={`border-t border-canvas-border ${className}`}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         {eyebrow && (
-          <div className="mb-4">
-            <Eyebrow>{eyebrow}</Eyebrow>
+          <div className="mb-8">
+            <SectionLabel index={index}>{eyebrow}</SectionLabel>
           </div>
         )}
         {children}
@@ -34,30 +38,57 @@ function Section({
   );
 }
 
-function AudienceCard({
-  eyebrow,
-  title,
-  copy,
-}: {
-  eyebrow: string;
-  title: string;
-  copy: string;
-}) {
+/**
+ * Grouped rows inside a single hairline panel, following the risks-and-controls
+ * block in the one-pager: bold white term on the left, supporting copy on the
+ * right, rows divided rather than boxed separately.
+ */
+function AudienceRow({ title, copy }: { title: string; copy: string }) {
   return (
-    <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
-      {/* <div className="eyebrow mb-3">{eyebrow}</div> */}
-      <h3 className="mb-2 text-lg font-semibold text-ink">{title}</h3>
-      <p className="text-sm leading-relaxed text-ink-muted">{copy}</p>
+    <div className="grid gap-2 border-b border-canvas-divider p-6 last:border-0 md:grid-cols-[15rem_1fr] md:gap-8 md:p-7">
+      <h3 className="text-base font-bold tracking-[-0.01em] text-ink">
+        {title}
+      </h3>
+      <p className="max-w-measure text-sm leading-relaxed text-ink-soft">
+        {copy}
+      </p>
     </div>
   );
 }
 
 function RoleTag({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-md border border-canvas-border bg-canvas-raised px-3 py-1.5 text-xs font-medium text-ink-muted">
-      <span className="h-1 w-1 rounded-full bg-accent-bright" />
+    <span className="inline-flex items-center gap-2.5 rounded-full border border-canvas-border bg-canvas-panel px-4 py-2 text-xs font-semibold text-ink-muted">
+      <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent" />
       {label}
     </span>
+  );
+}
+
+function ChannelCard({
+  label,
+  badge,
+  badgeTone,
+  title,
+  children,
+}: {
+  label: string;
+  badge: string;
+  badgeTone: "confirmed" | "warn";
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-card border border-canvas-border bg-canvas-panel p-6 md:p-7">
+      <div className="mb-5 flex items-center justify-between gap-4 border-b border-canvas-divider pb-4">
+        <span className="label-dim">{label}</span>
+        <Badge tone={badgeTone}>{badge}</Badge>
+      </div>
+      <h3 className="mb-3 text-lg font-bold tracking-[-0.01em] text-ink">
+        {title}
+      </h3>
+      <p className="text-sm leading-relaxed text-ink-soft">{children}</p>
+    </div>
   );
 }
 
@@ -79,16 +110,17 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       <header className="border-b border-canvas-border">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3">
-            <span className="h-0.5 w-6 rounded-full bg-accent-bright" />
-            <span className="text-sm font-semibold uppercase tracking-widest2 text-ink">
-              North Echo
-            </span>
-          </div>
-          <nav className="hidden items-center gap-8 text-xs font-medium uppercase tracking-widest2 text-ink-muted md:flex">
-            <a href="#strategy" className="hover:text-ink">Strategy</a>
-            <a href="#enterprise" className="hover:text-ink">Enterprise</a>
-            <a href="#datacenter" className="hover:text-ink">Data Centers</a>
+          <Wordmark />
+          <nav className="hidden items-center gap-10 text-label font-bold uppercase text-ink-faint md:flex">
+            <a href="#strategy" className="transition-colors hover:text-accent">
+              Strategy
+            </a>
+            <a href="#enterprise" className="transition-colors hover:text-accent">
+              Enterprise
+            </a>
+            <a href="#datacenter" className="transition-colors hover:text-accent">
+              Data Centers
+            </a>
           </nav>
           <Button
             variant="secondary"
@@ -106,10 +138,12 @@ export default function HomePage() {
       {/* Hero                                                             */}
       {/* ---------------------------------------------------------------- */}
       <section className="relative overflow-hidden">
-        <div className="dot-grid-bg pointer-events-none absolute inset-0 opacity-20 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]" />
+        {/* Echoes the blue rim-light on the hardware photography in the print
+            materials, in place of any applied pattern or texture. */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55rem_30rem_at_88%_-15%,rgba(108,171,224,0.14),transparent_62%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
           <Eyebrow>Private Asset Manager · AI Compute Infrastructure</Eyebrow>
-          <div className="mt-6 max-w-3xl">
+          <div className="mt-7 max-w-3xl">
             <Headline
               pre={
                 <>
@@ -119,11 +153,10 @@ export default function HomePage() {
               }
               emphasis="the AI economy runs on."
             />
-
           </div>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-muted">
-          North Echo is an asset manager for AI compute infrastructure. 
-          Our investors and limited partners directly own GPU fleets through dedicated vehicles. 
+          <p className="mt-8 max-w-measure text-base leading-relaxed text-ink-soft">
+          North Echo is an asset manager for AI compute infrastructure.
+          Our investors and limited partners directly own GPU fleets through dedicated vehicles.
           We source, underwrite, acquire, and operate the hardware where the AI economy consumes it.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -137,12 +170,12 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Who we raise from                                                */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="investors" eyebrow="Partnership Structure">
+      <Section id="investors" index="01" eyebrow="Partnership Structure">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight text-ink">
+          <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
             Long-term private capital, not the public markets.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink-muted">
+          <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
             North Echo serves as general partner and manager. Investors
             participate as limited partners with direct fractional ownership of
             physical compute — no cloud equity, no synthetic exposure. Vehicles
@@ -153,19 +186,16 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          <AudienceCard
-            eyebrow="LP Profile 01"
+        <div className="mt-12 overflow-hidden rounded-card border border-canvas-border bg-canvas-panel">
+          <AudienceRow
             title="Institutional investors"
             copy="Allocators seeking direct real-asset exposure to AI infrastructure: contracted revenue, hard-asset backing, and governance, reporting, and administration built to institutional standard."
           />
-          <AudienceCard
-            eyebrow="LP Profile 02"
+          <AudienceRow
             title="Family offices"
             copy="Direct co-ownership of revenue-generating hardware, structured for principals who evaluate sponsors the way they evaluate real estate GPs: alignment, underwriting discipline, and a defined path to exit."
           />
-          <AudienceCard
-            eyebrow="LP Profile 03"
+          <AudienceRow
             title="Wealth advisers & RIAs"
             copy="Advisers allocating client capital into an alternative with hard-asset backing, quarterly distributions, a defined hold period, and pass-through depreciation for taxable investors."
           />
@@ -175,23 +205,26 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Strategy shift                                                   */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="strategy" eyebrow="Strategy" className="bg-canvas-raised">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
+      <Section
+        id="strategy"
+        index="02"
+        eyebrow="Strategy"
+        className="bg-canvas-raised"
+      >
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-ink">
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
               Two channels for the same owned fleet:{" "}
-              <span className="font-serif italic text-accent-bright">
-                capacity and direct.
-              </span>
+              <span className="text-accent">capacity and direct.</span>
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-muted">
+            <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
               We lease owned GPU capacity to the leading inference platforms
               already serving production demand, and we provision compute
               directly to scaled AI companies through our own GPU cloud. Both
               channels put revenue against the same owned hardware, so
               utilization does not depend on any single buyer or operator.
             </p>
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-2.5">
               <RoleTag label="Leading inference platforms" />
               <RoleTag label="Next-gen AI labs" />
               <RoleTag label="High-growth, VC-backed startups" />
@@ -209,36 +242,28 @@ export default function HomePage() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="eyebrow">Channel 01 · Capacity</span>
-                <Badge tone="confirmed">Active</Badge>
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-ink">
-                Capacity compute
-              </h3>
-              <p className="text-sm leading-relaxed text-ink-muted">
-                Lease partner-owned fleets to established inference platforms.
-                Capital flows into revenue hardware, not platform R&D.
-                Utilization from day one.
-              </p>
-            </div>
+            <ChannelCard
+              label="Channel 01 · Capacity"
+              badge="Active"
+              badgeTone="confirmed"
+              title="Capacity compute"
+            >
+              Lease partner-owned fleets to established inference platforms.
+              Capital flows into revenue hardware, not platform R&D.
+              Utilization from day one.
+            </ChannelCard>
 
-            <div className="rounded-card border border-canvas-border bg-canvas-panel p-6">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="eyebrow">Channel 02 · Direct</span>
-                <Badge tone="warn">Coming Soon</Badge>
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-ink">
-                Direct: dedicated production GPU cloud
-              </h3>
-              <p className="text-sm leading-relaxed text-ink-muted">
-                Serve compute directly to scaled AI companies that contract
-                dedicated capacity through our cloud service. An owned,
-                bare-metal GPU cloud that monetizes the fleet with no
-                hyperscaler dependency.
-              </p>
-            </div>
+            <ChannelCard
+              label="Channel 02 · Direct"
+              badge="Coming Soon"
+              badgeTone="warn"
+              title="Direct: dedicated production GPU cloud"
+            >
+              Serve compute directly to scaled AI companies that contract
+              dedicated capacity through our cloud service. An owned,
+              bare-metal GPU cloud that monetizes the fleet with no
+              hyperscaler dependency.
+            </ChannelCard>
           </div>
         </div>
       </Section>
@@ -246,13 +271,13 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Enterprise co-location                                           */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="enterprise" eyebrow="Enterprise Co-Location">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+      <Section id="enterprise" index="03" eyebrow="Enterprise Co-Location">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-ink">
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
               We put compute where the data already lives.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-muted">
+            <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
               For enterprises with proprietary data and real inference demand,
               we co-locate GPU capacity next to their systems. That eliminates
               round-trip latency, keeps sensitive data in place, and gives the
@@ -299,15 +324,17 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Data center development & operations                             */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="datacenter" eyebrow="Data Center Development & Operations">
+      <Section
+        id="datacenter"
+        index="04"
+        eyebrow="Data Center Development & Operations"
+      >
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight text-ink">
+          <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
             We operate across the full stack:{" "}
-            <span className="font-serif italic text-accent-bright">
-              co-investor and tenant.
-            </span>
+            <span className="text-accent">co-investor and tenant.</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink-muted">
+          <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
             Owning the hardware pulls us toward the facility. We participate in
             data center development and operations directly, aligning capital,
             operations, and demand under one roof rather than renting from a
@@ -316,19 +343,23 @@ export default function HomePage() {
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
-          <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
-            <span className="eyebrow">Role 01</span>
-            <h3 className="mt-2 text-xl font-bold text-ink">Co-investor</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+          <div className="rounded-card border border-canvas-border bg-canvas-panel p-6 md:p-7">
+            <span className="label-dim">Role 01</span>
+            <h3 className="mt-3 text-xl font-bold tracking-[-0.01em] text-ink">
+              Co-investor
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               Where the mandate allows, partner capital participates alongside
               development partners in power, shell, and buildout — extending LP
               ownership from the fleet to the facility economics themselves.
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-card border border-canvas-border bg-canvas-panel p-6">
-            <span className="eyebrow">Role 02</span>
-            <h3 className="mt-2 text-xl font-bold text-ink">Tenant</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+          <div className="rounded-card border border-canvas-border bg-canvas-panel p-6 md:p-7">
+            <span className="label-dim">Role 02</span>
+            <h3 className="mt-3 text-xl font-bold tracking-[-0.01em] text-ink">
+              Tenant
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               We are our own anchor tenant. Partner-owned GPU fleets occupy the
               space, guaranteeing a utilization floor and de-risking the
               development.
@@ -340,22 +371,25 @@ export default function HomePage() {
       {/* ---------------------------------------------------------------- */}
       {/* Closing CTA                                                      */}
       {/* ---------------------------------------------------------------- */}
-      <section className="relative overflow-hidden border-t border-canvas-border">
-        <div className="dot-grid-bg pointer-events-none absolute inset-0 opacity-15 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="relative mx-auto max-w-4xl px-6 py-24 text-center md:py-32">
-          <Eyebrow>Next Step</Eyebrow>
-          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
-            Build the infrastructure. Own what every AI company will need.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-muted">
-            Partner with North Echo to own the compute the AI economy runs on.          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
-              Partner with us
-            </CopyEmailButton>
-            <CopyEmailButton variant="secondary" email={INVEST_EMAIL}>
-              Meet the team
-            </CopyEmailButton>
+      <section className="border-t border-canvas-border">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          {/* The next-step band from the one-pager: one hairline panel
+              carrying the label, the ask, and the actions. */}
+          <div className="rounded-band border border-canvas-border bg-canvas-panel px-6 py-12 text-center md:px-12 md:py-14">
+            <Eyebrow>Next Step</Eyebrow>
+            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-bold tracking-[-0.02em] text-ink md:text-4xl">
+              Build the infrastructure. Own what every AI company will need.
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-soft">
+              Partner with North Echo to own the compute the AI economy runs on.          </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
+                Partner with us
+              </CopyEmailButton>
+              <CopyEmailButton variant="secondary" email={INVEST_EMAIL}>
+                Meet the team
+              </CopyEmailButton>
+            </div>
           </div>
         </div>
       </section>
@@ -364,11 +398,11 @@ export default function HomePage() {
       {/* Footer                                                           */}
       {/* ---------------------------------------------------------------- */}
       <footer className="border-t border-canvas-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-xs text-ink-faint md:flex-row md:items-center md:justify-between">
-          <span className="uppercase tracking-widest2">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between md:gap-12">
+          <span className="label-dim shrink-0">
             North Echo · Confidential
           </span>
-          <span>
+          <span className="label-legal max-w-2xl leading-relaxed">
             Reg D private placement. Accredited investors only. This site is not
             an offer to sell securities.
           </span>

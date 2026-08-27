@@ -1,13 +1,27 @@
 type BadgeTone = "neutral" | "warn" | "confirmed";
 
-export function Badge({ tone = "neutral", children }: { tone?: BadgeTone; children: React.ReactNode }) {
+/**
+ * The one-pager sets status chips — NO CONTROL, PARTIAL — as neutral grey
+ * pills, deliberately avoiding traffic-light colour. Tones here differ only by
+ * emphasis: `confirmed` is the live state and gets the accent hairline,
+ * everything else stays grey.
+ */
+export function Badge({
+  tone = "neutral",
+  children,
+}: {
+  tone?: BadgeTone;
+  children: React.ReactNode;
+}) {
   const tones: Record<BadgeTone, string> = {
     neutral: "border-canvas-border text-ink-faint",
-    warn: "border-signal-warn/40 text-signal-warn bg-signal-warn/10",
-    confirmed: "border-signal-up/40 text-signal-up bg-signal-up/10",
+    warn: "border-canvas-border text-ink-faint",
+    confirmed: "border-accent/35 text-accent",
   };
   return (
-    <span className={`inline-block rounded border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest2 ${tones[tone]}`}>
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-micro font-semibold uppercase ${tones[tone]}`}
+    >
       {children}
     </span>
   );

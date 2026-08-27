@@ -6,15 +6,12 @@ export function DataTable({
   rows: (string | number)[][];
 }) {
   return (
-    <div className="overflow-hidden rounded-card border border-canvas-border">
+    <div className="overflow-hidden rounded-card border border-canvas-border bg-canvas-panel">
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-canvas-border bg-canvas-raised">
+          <tr className="border-b border-canvas-border">
             {columns.map((c) => (
-              <th
-                key={c}
-                className="px-4 py-3 text-left text-eyebrow font-semibold uppercase tracking-widest2 text-ink-faint"
-              >
+              <th key={c} className="label-dim px-5 py-4 text-left">
                 {c}
               </th>
             ))}
@@ -22,9 +19,12 @@ export function DataTable({
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-canvas-border last:border-0 hover:bg-canvas-raised/50">
+            <tr key={i} className="border-b border-canvas-divider last:border-0">
               {row.map((cell, j) => (
-                <td key={j} className="px-4 py-3 tabular-nums text-ink-muted first:text-ink first:font-medium">
+                <td
+                  key={j}
+                  className="px-5 py-4 tabular-nums text-ink-muted first:font-bold first:text-ink"
+                >
                   {cell}
                 </td>
               ))}

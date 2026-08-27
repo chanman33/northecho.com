@@ -1,3 +1,11 @@
-export function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <span className="eyebrow">{children}</span>;
+export function Eyebrow({
+  children,
+  tone = "accent",
+}: {
+  children: React.ReactNode;
+  tone?: "accent" | "dim";
+}) {
+  return (
+    <span className={tone === "dim" ? "label-dim" : "label"}>{children}</span>
+  );
 }

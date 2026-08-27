@@ -6,15 +6,22 @@ export function PhaseTimeline({
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {phases.map((p) => (
-        <div key={p.number} className="rounded-card border border-canvas-border bg-canvas-panel p-5">
-          <div className="eyebrow mb-1">
+        <div
+          key={p.number}
+          className="rounded-card border border-canvas-border bg-canvas-panel p-6"
+        >
+          <div className="label mb-3">
             Phase {p.number} · {p.period}
           </div>
-          <h4 className="mb-3 text-xl font-bold text-ink">{p.title}</h4>
-          <ul className="space-y-1.5 text-sm text-ink-muted">
+          <h4 className="mb-4 text-lg font-bold tracking-[-0.01em] text-ink">
+            {p.title}
+          </h4>
+          <ul className="space-y-2 text-sm leading-relaxed text-ink-soft">
             {p.items.map((item) => (
-              <li key={item} className="flex gap-2">
-                <span className="text-accent-bright">—</span>
+              <li key={item} className="flex gap-3">
+                <span aria-hidden="true" className="text-accent">
+                  —
+                </span>
                 {item}
               </li>
             ))}

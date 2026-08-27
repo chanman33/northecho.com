@@ -1,4 +1,4 @@
-import { inter, gelasio } from "@/app/fonts";
+import { sourceSans } from "@/app/fonts";
 import "./globals.css";
 
 export const metadata = {
@@ -9,8 +9,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${gelasio.variable}`}>
-      <body className="bg-canvas text-ink font-sans antialiased">{children}</body>
+    <html lang="en" className={sourceSans.variable}>
+      <body className="bg-canvas font-sans text-ink-soft antialiased">
+        {children}
+      </body>
     </html>
   );
 }

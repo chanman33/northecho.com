@@ -4,18 +4,32 @@
 
 @layer base {
   body {
-    @apply bg-canvas text-ink;
+    @apply bg-canvas text-ink-soft;
   }
   ::selection {
-    @apply bg-accent/30 text-ink;
+    @apply bg-accent/25 text-ink;
+  }
+  a,
+  button {
+    @apply outline-none;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply rounded-sm ring-2 ring-accent/60 ring-offset-2 ring-offset-canvas;
   }
 }
 
 @layer components {
-  .eyebrow {
-    @apply text-eyebrow font-semibold uppercase tracking-widest2 text-accent-bright;
+  /* The tracked-caps micro-label. Two tones, matching the one-pager: accent
+     for section and group headings, faint for captions and metadata. */
+  .label {
+    @apply text-label font-bold uppercase text-accent;
   }
-  .dot-grid-bg {
-    @apply bg-dot-grid bg-dot-lg;
+  .label-dim {
+    @apply text-label font-bold uppercase text-ink-faint;
+  }
+  /* Legal and disclosure type: smaller, lighter tracking, dim. */
+  .label-legal {
+    @apply text-micro font-normal uppercase text-ink-faint;
   }
 }

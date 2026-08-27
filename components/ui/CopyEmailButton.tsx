@@ -58,7 +58,7 @@ export function CopyEmailButton({
       <span
         role="status"
         aria-live="polite"
-        className={`pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-canvas-border bg-canvas-raised px-3 py-1.5 text-xs font-medium text-ink shadow-lg transition-all duration-150 ${
+        className={`pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-canvas-border bg-canvas-panel px-3 py-1.5 text-xs font-semibold text-ink transition-all duration-150 ${
           copied ? "opacity-100" : "translate-y-1 opacity-0"
         }`}
       >
