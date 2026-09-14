@@ -56,15 +56,6 @@ function AudienceRow({ title, copy }: { title: string; copy: string }) {
   );
 }
 
-function RoleTag({ label }: { label: string }) {
-  return (
-    <span className="inline-flex items-center gap-2.5 rounded-full border border-canvas-border bg-canvas-panel px-4 py-2 text-xs font-semibold text-ink-muted">
-      <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent" />
-      {label}
-    </span>
-  );
-}
-
 function ChannelCard({
   label,
   badge,
@@ -118,9 +109,6 @@ export default function HomePage() {
             <a href="#enterprise" className="transition-colors hover:text-accent">
               Enterprise
             </a>
-            <a href="#datacenter" className="transition-colors hover:text-accent">
-              Data Centers
-            </a>
           </nav>
           <Button
             variant="secondary"
@@ -155,9 +143,9 @@ export default function HomePage() {
             />
           </div>
           <p className="mt-8 max-w-measure text-base leading-relaxed text-ink-soft">
-          North Echo is an asset manager for AI compute infrastructure.
-          Our investors and limited partners directly own GPU fleets through dedicated vehicles.
-          We source, underwrite, acquire, and operate the hardware where the AI economy consumes it.
+            North Echo manages AI compute infrastructure for institutional
+            investors. Limited partners directly own GPU fleets; we source,
+            underwrite, acquire, and operate the hardware.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
@@ -176,28 +164,25 @@ export default function HomePage() {
             Long-term private capital, not the public markets.
           </h2>
           <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
-            North Echo serves as general partner and manager. Investors
-            participate as limited partners with direct fractional ownership of
-            physical compute — no cloud equity, no synthetic exposure. Vehicles
-            are structured under Reg D for accredited and qualified
-            participants, with quarterly distributions
-            from contracted revenue, and pass-through depreciation where
-            applicable.
+            North Echo is GP. Limited partners hold direct fractional ownership
+            of physical compute — not cloud equity or synthetic exposure. Reg D
+            vehicles for accredited investors: quarterly distributions from
+            contracted revenue and pass-through depreciation where applicable.
           </p>
         </div>
 
         <div className="mt-12 overflow-hidden rounded-card border border-canvas-border bg-canvas-panel">
           <AudienceRow
             title="Institutional investors"
-            copy="Allocators seeking direct real-asset exposure to AI infrastructure: contracted revenue, hard-asset backing, and governance, reporting, and administration built to institutional standard."
+            copy="Direct real-asset exposure with contracted revenue, hard-asset backing, and institutional-grade reporting."
           />
           <AudienceRow
             title="Family offices"
-            copy="Direct co-ownership of revenue-generating hardware, structured for principals who evaluate sponsors the way they evaluate real estate GPs: alignment, underwriting discipline, and a defined path to exit."
+            copy="Co-ownership of revenue-generating hardware with GP alignment, underwriting discipline, and a defined exit."
           />
           <AudienceRow
             title="Wealth advisers & RIAs"
-            copy="Advisers allocating client capital into an alternative with hard-asset backing, quarterly distributions, a defined hold period, and pass-through depreciation for taxable investors."
+            copy="Hard-asset alternative with quarterly distributions, defined hold period, and pass-through depreciation."
           />
         </div>
       </Section>
@@ -218,17 +203,10 @@ export default function HomePage() {
               <span className="text-accent">capacity and direct.</span>
             </h2>
             <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
-              We lease owned GPU capacity to the leading inference platforms
-              already serving production demand, and we provision compute
-              directly to scaled AI companies through our own GPU cloud. Both
-              channels put revenue against the same owned hardware, so
-              utilization does not depend on any single buyer or operator.
+              We lease owned GPU capacity to inference platforms and provision
+              compute directly through our GPU cloud. Both channels monetize the
+              same owned hardware — utilization is not tied to one buyer.
             </p>
-            <div className="mt-8 flex flex-wrap gap-2.5">
-              <RoleTag label="Leading inference platforms" />
-              <RoleTag label="Next-gen AI labs" />
-              <RoleTag label="High-growth, VC-backed startups" />
-            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
                 variant="primary"
@@ -249,8 +227,7 @@ export default function HomePage() {
               title="Capacity compute"
             >
               Lease partner-owned fleets to established inference platforms.
-              Capital flows into revenue hardware, not platform R&D.
-              Utilization from day one.
+              Revenue hardware from day one.
             </ChannelCard>
 
             <ChannelCard
@@ -259,10 +236,8 @@ export default function HomePage() {
               badgeTone="warn"
               title="Direct: dedicated production GPU cloud"
             >
-              Serve compute directly to scaled AI companies that contract
-              dedicated capacity through our cloud service. An owned,
-              bare-metal GPU cloud that monetizes the fleet with no
-              hyperscaler dependency.
+              Dedicated production GPU cloud for scaled AI companies. Owned
+              bare-metal capacity with no hyperscaler dependency.
             </ChannelCard>
           </div>
         </div>
@@ -278,11 +253,9 @@ export default function HomePage() {
               We put compute where the data already lives.
             </h2>
             <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
-              For enterprises with proprietary data and real inference demand,
-              we co-locate GPU capacity next to their systems. That eliminates
-              round-trip latency, keeps sensitive data in place, and gives the
-              enterprise dedicated capacity without building or owning the
-              hardware themselves.
+              For enterprises with proprietary data and inference demand, we
+              co-locate GPU capacity on-site — low latency, data stays in
+              place, dedicated capacity without capex.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
@@ -301,69 +274,19 @@ export default function HomePage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <Card eyebrow="Value 01" title="Data locality">
-              Compute sits beside the data. No egress, no round-trip latency
-              across the public internet.
+              Compute beside the data. No egress or internet round-trips.
             </Card>
             <Card eyebrow="Value 02" title="Dedicated capacity">
-              Reserved fleets under a take-or-pay anchor arrangement. Predictable
-              cost, predictable performance.
+              Reserved fleets under take-or-pay. Predictable cost and
+              performance.
             </Card>
             <Card eyebrow="Value 03" title="No capex burden">
-              The enterprise consumes capacity. North Echo&apos;s limited
-              partners own and depreciate the hardware; North Echo manages the
-              deployment end to end.
+              Tenants consume capacity; limited partners own and depreciate the
+              hardware.
             </Card>
             <Card eyebrow="Value 04" title="Sovereign control">
-              Every layer owned or contracted by the vehicle. No hyperscaler
-              dependency for the tenant.
+              Owned or contracted by the vehicle. No hyperscaler dependency.
             </Card>
-          </div>
-        </div>
-      </Section>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* Data center development & operations                             */}
-      {/* ---------------------------------------------------------------- */}
-      <Section
-        id="datacenter"
-        index="04"
-        eyebrow="Data Center Development & Operations"
-      >
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
-            We operate across the full stack:{" "}
-            <span className="text-accent">co-investor and tenant.</span>
-          </h2>
-          <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
-            Owning the hardware pulls us toward the facility. We participate in
-            data center development and operations directly, aligning capital,
-            operations, and demand under one roof rather than renting from a
-            counterparty at every layer.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
-          <div className="rounded-card border border-canvas-border bg-canvas-panel p-6 md:p-7">
-            <span className="label-dim">Role 01</span>
-            <h3 className="mt-3 text-xl font-bold tracking-[-0.01em] text-ink">
-              Co-investor
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Where the mandate allows, partner capital participates alongside
-              development partners in power, shell, and buildout — extending LP
-              ownership from the fleet to the facility economics themselves.
-            </p>
-          </div>
-          <div className="rounded-card border border-canvas-border bg-canvas-panel p-6 md:p-7">
-            <span className="label-dim">Role 02</span>
-            <h3 className="mt-3 text-xl font-bold tracking-[-0.01em] text-ink">
-              Tenant
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              We are our own anchor tenant. Partner-owned GPU fleets occupy the
-              space, guaranteeing a utilization floor and de-risking the
-              development.
-            </p>
           </div>
         </div>
       </Section>
@@ -378,10 +301,8 @@ export default function HomePage() {
           <div className="rounded-band border border-canvas-border bg-canvas-panel px-6 py-12 text-center md:px-12 md:py-14">
             <Eyebrow>Next Step</Eyebrow>
             <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-bold tracking-[-0.02em] text-ink md:text-4xl">
-              Build the infrastructure. Own what every AI company will need.
+              Own the compute the AI economy runs on.
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-soft">
-              Partner with North Echo to own the compute the AI economy runs on.          </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <CopyEmailButton variant="primary" email={INVEST_EMAIL}>
                 Partner with us

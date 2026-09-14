@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata = {
   title: "North Echo Compute",
   description:
-    "North Echo is an asset manager for AI compute infrastructure. Partners own the GPU fleets; North Echo acquires, deploys, and operates them on their behalf.",
+    "North Echo manages AI compute infrastructure for institutional investors. Limited partners directly own GPU fleets; we source, underwrite, and operate the hardware.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
