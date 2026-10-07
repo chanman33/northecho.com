@@ -85,19 +85,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section
-        id="hardware"
-        index="01"
-        eyebrow="NVIDIA fleets"
-        className="bg-canvas-raised"
-      >
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
-            NVIDIA B300 fleets.
-          </h2>
-          <p className="mt-5 max-w-measure text-base leading-relaxed text-ink-soft">
-          Dedicated bare-metal NVIDIA B300 nodes under long-term contract, with full-stack control and no shared tenancy.
-          </p>
+      <Section id="hardware" index="01" eyebrow="NVIDIA fleets" className="bg-black">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <div className="min-w-0 max-w-xl">
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink">
+              NVIDIA B300 fleets.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink-soft">
+              Dedicated bare-metal NVIDIA B300 nodes under long-term contract, with full-stack control and no shared tenancy.
+            </p>
+          </div>
+          <div className="min-w-0">
+            {/* Crop the black field on small screens so the module fills the column. */}
+            <div className="relative mx-auto aspect-[325/294] w-full max-w-md overflow-hidden lg:aspect-auto lg:max-w-xl lg:overflow-visible">
+              <img
+                src="/images/nvidia-b300-hgx.webp"
+                alt="NVIDIA HGX B300"
+                width={690}
+                height={362}
+                className="absolute inset-0 h-full w-full object-cover object-center lg:static lg:h-auto lg:max-w-full lg:object-contain"
+              />
+            </div>
+          </div>
         </div>
       </Section>
 
