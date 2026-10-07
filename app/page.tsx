@@ -33,8 +33,6 @@ function Section({
   );
 }
 
-const CLOUD_SITE = "https://northecho.ai";
-
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-canvas">
@@ -50,14 +48,6 @@ export default function HomePage() {
             </a>
             <a href="#capacity" className="transition-colors hover:text-accent">
               Capacity
-            </a>
-            <a
-              href={CLOUD_SITE}
-              className="transition-colors hover:text-accent"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Fleet
             </a>
           </nav>
           <Button href="#capacity" variant="secondary" className="hidden md:inline-flex">
