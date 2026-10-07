@@ -139,9 +139,9 @@ export default function HomePage() {
           </Card>
         </div>
         <p className="mt-8 max-w-measure text-base leading-relaxed text-ink-soft">
-          We handle infrastructure, from procurement to uptime. Your team keeps
-          the stack: orchestration, runtimes and models.
+          We handle infrastructure, from procurement to uptime.<br className="hidden sm:inline" /> Your team keeps the stack: orchestration, runtimes and models.
         </p>
+   
       </Section>
 
       <section id="capacity" className="border-t border-canvas-border">
